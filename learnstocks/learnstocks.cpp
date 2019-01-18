@@ -12,12 +12,13 @@ using namespace std;
 #define NG 0
 #define SETSIZE 100//学习数据大小
 #define CNO 10//学习数据的位数
-#define GENMAX 10000//生成候选解的次数
-#define SEED 32767//随机数种子
+#define GENMAX 100000//生成候选解的次数
+#define SEED 6666//随机数种子
 
 void readdata(int data[SETSIZE][CNO], int takcher[SETSIZE]);//读入学习数据
 int rand012();//返回0\1\2的随机函数
 int calcscore(int data[SETSIZE][CNO], int teacher[SETSIZE], int answer[CNO]);//计算候选解的得分
+int rand01();
 
 int main()
 {
@@ -37,6 +38,8 @@ int main()
 		for (j = 0; j < CNO; j++) {
 			answer[j] = rand012();
 		}
+		score = calcscore(data, teacher, answer);
+
 		if (score > bestscore) {
 			for (j = 0; j < CNO; ++j)
 				bestanswer[j] = answer[j];
@@ -52,10 +55,63 @@ int main()
 
 	cout << "最优解" << endl;
 	for (j = 0; j < CNO; j++) {
-		cout << bestanswer[j];
+		cout << bestanswer[j]<<" ";
 	}
 	cout << ": score=" << bestscore << endl;
 	return 0;
+}
+
+//候选解模式的得分
+int calcscore(int data[SETSIZE][CNO], int teacher[SETSIZE], int answer[CNO])
+{
+	int score = 0;
+	int point;
+	int i, j;
+	for (i = 0; i < SETSIZE; ++i) 
+	{
+		point = 0;
+		for (j = 0; j < CNO; j++)
+		{
+			if (answer[j] == 2) ++point;
+			else if (answer[j] == data[i][j])  ++point;
+		}
+		if ((point == CNO) && (teacher[i] == 1))++score;
+		else if ((point != CNO) && teacher[i] == 0) ++score;
+	}
+	return score;
+}
+//读入学习数据
+void readdata(int data[SETSIZE][CNO], int teacher[SETSIZE])
+{
+	int i, j;
+	for (i = 0; i < SETSIZE;++i)
+	{
+		for (j = 0; j < CNO; j++)
+			//cin >> data[i][j];
+			data[i][j] = rand01();
+	//cin >> teacher[i];
+	teacher[i] = rand01();
+	}
+	for (i = 0; i < SETSIZE; ++i)
+	{
+		for (j = 0; j < CNO; j++)
+			cout << data[i][j] << " ";
+		cout << "     "<<teacher[i] << endl;
+	}
+}
+
+int rand012()
+{
+	int rnd;
+	while((rnd=rand())==RAND_MAX);
+	return (double)rnd / RAND_MAX * 3;
+}
+
+int rand01()
+{
+	int rnd;
+	while ((rnd = rand()) == RAND_MAX);
+	return (double)rnd / RAND_MAX * 2;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

@@ -1,0 +1,7 @@
+﻿  learnstocks.cpp
+I:\DeepLearning\learnstocks\learnstocks.cpp(3): warning C4603: “_CRT_SECURE_NO_WARNINGS”: 未定义宏或在预编译头使用后定义发生改变
+  I:\DeepLearning\learnstocks\learnstocks.cpp(3): note: 将宏添加到预编译头中，而不是在此处定义
+  I:\DeepLearning\learnstocks\learnstocks.cpp(4): note: 使用预编译头
+I:\DeepLearning\learnstocks\learnstocks.cpp(107): warning C4244: “return”: 从“double”转换到“int”，可能丢失数据
+I:\DeepLearning\learnstocks\learnstocks.cpp(114): warning C4244: “return”: 从“double”转换到“int”，可能丢失数据
+  learnstocks.vcxproj -> I:\DeepLearning\learnstocks\x64\Debug\learnstocks.exe
