@@ -1,0 +1,7 @@
+﻿  learnstocks.cpp
+D:\Deeplearning\learnstocks\learnstocks.cpp(3): warning C4603: “_CRT_SECURE_NO_WARNINGS”: 未定义宏或在预编译头使用后定义发生改变
+  D:\Deeplearning\learnstocks\learnstocks.cpp(3): note: 将宏添加到预编译头中，而不是在此处定义
+  D:\Deeplearning\learnstocks\learnstocks.cpp(4): note: 使用预编译头
+learnstocks.obj : error LNK2019: 无法解析的外部符号 "void __cdecl readdata(int (* const)[10],int * const)" (?readdata@@YAXQAY09HQAH@Z)，该符号在函数 _main 中被引用
+learnstocks.obj : error LNK2019: 无法解析的外部符号 "int __cdecl rand012(void)" (?rand012@@YAHXZ)，该符号在函数 _main 中被引用
+D:\Deeplearning\learnstocks\Debug\learnstocks.exe : fatal error LNK1120: 2 个无法解析的外部命令
